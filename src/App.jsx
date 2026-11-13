@@ -123,7 +123,7 @@ export default function App() {
     window.open(
       "https://wa.me/?text=" +
         encodeURIComponent(
-          `¡Pégate con EL DICHOSO! Descubre tus 6 números de la suerte, gratis y solo para entretenimiento: ${link}`
+          `¡Pégate con EL DICHOSO! Descubre tus 6 números de la suerte, gratis: ${link}`
         ),
       "_blank",
       "noopener"

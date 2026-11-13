@@ -100,19 +100,33 @@ export default function ScratchCell({ index, num, box, face, revealed, onReveal,
           onReveal(index)
         }
       }}
-      className="absolute z-[2] rounded-full outline-offset-[3px] focus-visible:outline-[3px] focus-visible:outline-white"
+      className="absolute z-[2] rounded-full outline-offset-[2px] focus-visible:outline-[2px]  focus-visible:outline-white"
     >
       {/* gold disc + number */}
-      <div className="absolute inset-0 grid place-items-center rounded-full bg-[radial-gradient(circle_at_50%_35%,#ffe85c,#ffbe00_75%)]">
-        <span
+      <div
+        className={cn(
+          "absolute inset-0 rounded-full p-[1.1cqw]",
+          "bg-[radial-gradient(ellipse_at_45%_30%,#fff8b0,#ffe23a_35%,#ffc400_70%,#f0a000)]",
+          ""
+        )}
+      >
+        <div
           className={cn(
-            "scale-[.8] text-[length:15.5cqw] font-black leading-none tabular-nums text-[#111]",
-            "transition-transform duration-500 ease-[cubic-bezier(.2,1.6,.4,1)]",
-            revealed && "scale-100"
+            "grid h-full w-full place-items-center overflow-hidden rounded-full ",
+            "bg-[radial-gradient(ellipse_at_45%_30%,#fff8b0,#ffe23a_35%,#ffc400_70%,#f0a000)]",
+            ""
           )}
         >
-          {num}
-        </span>
+          <span
+            className={cn(
+              "scale-[.8] font-['Barlow',sans-serif] text-[length:12cqw]  font-black italic leading-none tracking-[-0.03em] tabular-nums text-[#111]",
+              "transition-transform duration-500 ease-[cubic-bezier(.2,1.6,.4,1)]",
+              revealed && "scale-100"
+            )}
+          >
+            {num}
+          </span>
+        </div>
       </div>
 
       {/* scratch layer */}
