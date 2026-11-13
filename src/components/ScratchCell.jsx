@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { pc } from "@/lib/layout"
+import { scratchMove, scratchStart, scratchStop } from "@/lib/sfx"
 
 /**
  * One gold disc with a scratch-off canvas on top.
@@ -67,15 +68,20 @@ export default function ScratchCell({ index, num, box, face, revealed, onReveal,
     st.current.down = true
     e.currentTarget.setPointerCapture(e.pointerId)
     st.current.last = null
+    scratchStart()
     dot(pt(e))
     e.preventDefault()
   }
   const onPointerMove = (e) => {
     if (!st.current.down) return
-    dot(pt(e))
+    const p = pt(e)
+    const a = st.current.last || p
+    scratchMove(Math.hypot(p[0] - a[0], p[1] - a[1]) / canvasRef.current.width)
+    dot(p)
     if (++st.current.n % 6 === 0) check()
   }
   const onPointerUp = () => {
+    scratchStop()
     if (!st.current.down) return
     st.current.down = false
     st.current.last = null
@@ -116,6 +122,7 @@ export default function ScratchCell({ index, num, box, face, revealed, onReveal,
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
+        onLostPointerCapture={onPointerUp}
         className={cn(
           "absolute inset-0 h-full w-full cursor-grab touch-none rounded-full",
           "transition-[opacity,scale] duration-500",
