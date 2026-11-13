@@ -28,20 +28,20 @@ const WhatsAppIcon = () => (
 
 const ACTIONS = [
   {
-    label: "GUARDAR MIS NÚMEROS",
-    lines: ["GUARDAR", "MIS NÚMEROS"],
+    label: "SAVE MY NUMBERS",
+    lines: ["SAVE", "MY NUMBERS"],
     Icon: DownloadIcon,
     bg: "[--fill:linear-gradient(#22a653,#0b7a32_55%,#05501f)] [--edge:#033a16] [--glow:#3dff8a99]",
   },
   {
-    label: "QUIERO 6 NÚMEROS NUEVOS ($3)",
-    lines: ["QUIERO 6 NUEVOS", "NÚMEROS ($3)", ""],
+    label: "I WANT 6 NEW NUMBERS",
+    lines: ["I WANT 6 NEW", "NUMBERS", ""],
     Icon: RefreshIcon,
     bg: "[--fill:linear-gradient(#d8212a,#a50d14_55%,#6e070c)] [--edge:#4d0408] [--glow:#ff4d5a99]",
   },
   {
-    label: "COMPARTIR POR WHATSAPP",
-    lines: ["COMPARTIR", "POR WHATSAPP", ""],
+    label: "SHARE VIA WHATSAPP",
+    lines: ["SHARE", "VIA WHATSAPP", ""],
     Icon: WhatsAppIcon,
     bg: "[--fill:linear-gradient(#4a3fd8,#2a1fa6_55%,#180f6e)] [--edge:#0f0950] [--glow:#8a7dff99]",
   },
