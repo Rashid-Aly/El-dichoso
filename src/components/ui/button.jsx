@@ -25,6 +25,19 @@ const buttonVariants = cva(
         hotspot:
           "absolute z-[5] border-0 bg-transparent p-0 rounded-[4cqw] cursor-pointer " +
           "active:bg-[#ffffff22] focus-visible:outline-[3px] focus-visible:outline-white",
+        // glossy GUARDAR / OTROS 6 / WHATSAPP buttons on the card (sizes in cqw of the card);
+        // colours come from --fill / --edge / --glow set by the caller
+        action:
+          "absolute z-[5] flex flex-row items-center justify-center gap-[0.8cqw] px-[1.4cqw] py-0 cursor-pointer " +
+          "rounded-full border-[0.6cqw] border-solid border-transparent text-white uppercase italic font-extrabold " +
+          "[background:var(--fill)_padding-box,linear-gradient(#fff,#fff6e0_45%,#e9d2a6)_border-box] " +
+          "text-left text-[length:3.1cqw] leading-[0.95] whitespace-nowrap [text-shadow:0_0.3cqw_0_#0006] " +
+          "shadow-[inset_0_0_0_0.25cqw_#00000059,inset_0_-0.9cqw_0.7cqw_#00000047,0_0.7cqw_0_var(--edge),0_1cqw_1.2cqw_#0009,0_0_0.9cqw_#ffffffa6,0_0_1.8cqw_var(--glow)] " +
+          "before:pointer-events-none before:absolute before:inset-x-[6%] before:top-[7%] before:h-[44%] before:rounded-full " +
+          "before:bg-[linear-gradient(#ffffff80,#ffffff0d)] before:content-[''] [&>*]:relative " +
+          "transition-[translate,box-shadow] duration-100 active:translate-y-[0.5cqw] " +
+          "active:shadow-[inset_0_0_0_0.25cqw_#00000059,inset_0_-0.9cqw_0.7cqw_#00000047,0_0.2cqw_0_var(--edge),0_0.4cqw_0.6cqw_#0009,0_0_1.8cqw_var(--glow)] " +
+          "focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-white",
         // the little "Revelar número" a11y pill
         reveal:
           "absolute left-1/2 bottom-[-3cqw] z-[6] -translate-x-1/2 border-0 bg-white text-ink " +

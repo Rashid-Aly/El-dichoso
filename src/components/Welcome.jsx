@@ -1,6 +1,7 @@
 import welcome from "@/assets/welcome.jpg"
 import { Button } from "@/components/ui/button"
 import { pc } from "@/lib/layout"
+import { cn } from "@/lib/utils"
 
 // Hotspot boxes, in % of the 682x1024 welcome artwork
 const BTNS = [
@@ -13,8 +14,23 @@ export default function Welcome({ onStart, onCoupon, onCircular }) {
   const actions = [onStart, onCoupon, onCircular]
 
   return (
-    <section aria-label="Bienvenida">
+    <section aria-label="Bienvenida" className="flex min-h-dvh flex-col justify-center">
       <h1 className="sr-only">Pégate con El Dichoso. ¡Damos suerte!</h1>
+
+      <div className="@container w-full">
+        <p
+          className={cn(
+            "mx-[3.25cqw] my-0 flex items-center justify-center whitespace-nowrap rounded-full px-[3cqw] py-[2.6cqw] text-center",
+            "border-[0.7cqw] border-solid border-[#fff0a0]",
+            "bg-[linear-gradient(#c58a00,#ffd21f_14%,#fff3a6_46%,#ffc400_78%,#a86f00)]",
+            "shadow-[inset_0_0_0_0.3cqw_#8a5a0080,0_0.6cqw_1.2cqw_#0005]",
+            "font-['Archivo_Black','Arial_Black',sans-serif] text-[length:7.4cqw] not-italic uppercase leading-none tracking-[-0.01em] text-[#0b0b0b]",
+            "[text-shadow:0_0.25cqw_0_#ffffff80]"
+          )}
+        >
+          GET LUCKY <span className="mx-[1.2cqw] text-[0.9em] [text-shadow:none]">🍀</span> TODAY
+        </p>
+      </div>
 
       <div
         className="@container relative aspect-[682/1024] w-full select-none overflow-hidden bg-white bg-[length:100%_100%] bg-no-repeat"
