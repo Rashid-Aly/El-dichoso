@@ -6,6 +6,7 @@ import Confetti, { makeBurst } from "@/components/Confetti"
 import { useToastMessage } from "@/hooks/use-toast-message"
 import { cn } from "@/lib/utils"
 import { newCard, persist, renderCardPng, restore } from "@/lib/card"
+import { playCelebration, unlockAudio } from "@/lib/sfx"
 
 // same boot logic as the original: restored card + #tarjeta -> go straight to the card
 function boot() {
@@ -53,6 +54,7 @@ export default function App() {
   const confetti = useCallback(() => {
     const id = Date.now() + Math.random()
     setBursts((b) => [...b, { id, pieces: makeBurst() }])
+    playCelebration()
     setTimeout(() => setBursts((b) => b.filter((x) => x.id !== id)), 4000)
   }, [])
 
@@ -69,6 +71,7 @@ export default function App() {
   )
 
   const revealAll = () => {
+    unlockAudio()
     const c = cardRef.current
     const todo = c.rev.map((v, i) => [v, i]).filter(([v]) => !v)
     if (!todo.length) {

@@ -1,11 +1,18 @@
 import bg from "@/assets/bg.jpg"
 import overlay from "@/assets/overlay.png"
 import hand from "@/assets/hand.png"
+import storeButtons from "@/assets/store-buttons.jpg"
 import { Button } from "@/components/ui/button"
 import ScratchCell from "@/components/ScratchCell"
 import { BANHOT, BTN, CELLS, FACES, HBOX, pc } from "@/lib/layout"
 
 const BTN_LABELS = ["GUARDAR MIS NÚMEROS", "QUIERO OTROS 6 NÚMEROS", "COMPARTIR POR WHATSAPP"]
+
+// Hotspot boxes, in % of the 1024x551 store-buttons artwork
+const STORE_BTNS = [
+  { label: "My store gift coupon", box: { l: 4.4, t: 11.3, w: 90.9, h: 29.6 } },
+  { label: "View here this week's sale circular", box: { l: 3.9, t: 44.5, w: 92.3, h: 35.4 } },
+]
 
 export default function CardScreen({
   card,
@@ -16,9 +23,12 @@ export default function CardScreen({
   onSave,
   onAgain,
   onWhatsApp,
+  onCoupon,
+  onCircular,
 }) {
   const found = card.rev.filter(Boolean).length
   const actions = [onSave, onAgain, onWhatsApp]
+  const storeActions = [onCoupon, onCircular]
 
   return (
     <section aria-label="Tarjeta digital">
@@ -77,6 +87,23 @@ export default function CardScreen({
           aria-label="Raspa aquí tus 6 números: revelar los números restantes"
           onClick={onRevealAll}
         />
+      </div>
+
+      <div
+        className="@container relative aspect-[1024/551] w-full select-none overflow-hidden bg-[length:100%_100%] bg-no-repeat"
+        style={{ backgroundImage: `url(${storeButtons})` }}
+      >
+        {STORE_BTNS.map(({ label, box }, i) => (
+          <Button
+            key={i}
+            variant="hotspot"
+            size="none"
+            className="rounded-[8cqw]"
+            style={pc(box)}
+            aria-label={label}
+            onClick={storeActions[i]}
+          />
+        ))}
       </div>
 
       <p className="sr-only" aria-live="polite">
