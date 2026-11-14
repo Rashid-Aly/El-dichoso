@@ -1,4 +1,5 @@
 import welcome from "@/assets/welcome.jpg"
+import logo from "@/assets/logo.jpg"
 import { Button } from "@/components/ui/button"
 import { pc } from "@/lib/layout"
 import { cn } from "@/lib/utils"
@@ -9,6 +10,9 @@ const BTNS = [
   { label: "My store gift coupon", box: { l: 3.23, t: 66.5, w: 93.4, h: 11.52 } },
   { label: "View here this week's sale circular", box: { l: 3.08, t: 81.15, w: 93.84, h: 13.09 } },
 ]
+// old logo spans x 74–621, y 14–511 of the artwork; padded so none of it shows,
+// but stops above the green button's border (y 522)
+const LOGO = { l: 9.97, t: 0.78, w: 81.96, h: 49.6 }
 
 export default function Welcome({ onStart, onCoupon, onCircular }) {
   const actions = [onStart, onCoupon, onCircular]
@@ -36,6 +40,15 @@ export default function Welcome({ onStart, onCoupon, onCircular }) {
         className="@container relative aspect-[682/1024] w-full select-none overflow-hidden bg-white bg-[length:100%_100%] bg-no-repeat"
         style={{ backgroundImage: `url(${welcome})` }}
       >
+        {/* covers the logo baked into welcome.jpg */}
+        <div className="pointer-events-none absolute bg-white" style={pc(LOGO)}>
+          <img
+            src={logo}
+            alt=""
+            className="absolute inset-x-0 top-0 h-[calc(100%-2cqw)] w-full object-contain mix-blend-multiply"
+          />
+        </div>
+
         {BTNS.map(({ label, box }, i) => (
           <Button
             key={i}
